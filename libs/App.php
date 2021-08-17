@@ -52,9 +52,9 @@ private function _loadController(){
     }
 }
 private function _loadControllerMethod(){
-    $urlLength=count($this->_url);
+    $urlLength=count($this->_url); //checking the lenght of the url
     if($urlLength>1){
-        
+
     }
 }
 
