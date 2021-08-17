@@ -12,7 +12,9 @@ function __construct()
         $this->_loadDefaultController();
         return false;
     }
-    $this->_loadController();
+    if($this->_loadController()){
+        $this->_loadControllerMethod();
+    }
 }
 
 private function _getURL(){
@@ -43,7 +45,6 @@ private function _loadController(){
     if(file_exists($file)){
         require $file;
         $this->_controller=new $this->_url[0];
-        $this->_controller->index();
         return true;
     }
     else{
@@ -53,8 +54,32 @@ private function _loadController(){
 }
 private function _loadControllerMethod(){
     $urlLength=count($this->_url); //checking the lenght of the url
-    if($urlLength>1){
-
+    if($urlLength>1){  //urllenght=1 means there is only the '/Controller ' in the url
+        if(!method_exists($this->_controller,$this->_url[1])){
+            echo "Sorry requested method not found";
+            exit;
+        }
+    }
+        switch ($urlLength) { 
+            // $this->_url[0]= 'controller' ,  _url[1]='Method', _url[2]= parameters
+            case 6:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5]);
+                break;
+            case 5:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
+                break;
+            case 4:
+                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
+                break;
+            case 3:
+                $this->_controller->{$this->_url[1]}($this->_url[2]); //length =3 . so 1 parameter --> ($this->_url[2])
+                break;
+            case 2:
+                $this->_controller->{$this->_url[1]}();//length =2 . so no parameters --> ()
+                break;
+            default:
+                $this->_controller->index();
+                break; 
     }
 }
 
