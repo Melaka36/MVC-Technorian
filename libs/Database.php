@@ -10,5 +10,10 @@ class Database extends PDO{
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function insertData($query){
+        $stmt = $this->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
 ?>

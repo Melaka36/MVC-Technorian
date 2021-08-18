@@ -5,7 +5,7 @@
 define('DB_TYPE','mysql');
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_NAME','mvcTechnorian');
+define('DB_NAME','mvctechnorian');
 define('DB_PASSWORD','');
 
 
