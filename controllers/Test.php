@@ -7,7 +7,9 @@ class Test extends Controller{
     }
     function index(){
         //echo "dff";
-        $this->model->printSomething();
+        //$this->model->printSomething();
+        $this->view->users=$this->model->getData(); 
+        $this->view->render('Test');
     }
 }
 

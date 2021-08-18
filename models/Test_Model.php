@@ -4,8 +4,9 @@ class Test_Model extends Model{
     {
         parent::__construct();
     }
-    function printSomething(){
-        echo "Hello from Test_Model";
+    function getData(){
+        $sql="SELECT * from users";
+        return $this->db->selectAllUsers($sql);
     }
 }
 
