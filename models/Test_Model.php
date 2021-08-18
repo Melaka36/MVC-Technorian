@@ -4,9 +4,8 @@ class Test_Model extends Model{
     {
         parent::__construct();
     }
-    function index(){
-        
-        $this->model->printSomething();
+    function printSomething(){
+        echo "Hello from Test_Model";
     }
 }
 
