@@ -27,7 +27,7 @@ private function _getURL(){
     //sanitize the url. remove special charaters and etc. ex:- % & signs
     
     $this->_url= explode('/',$url); // divide url into parts by '/' and assign them into an array
-    print_r($this->_url);
+    //print_r($this->_url);
     //print_r($this->$url); //printing the url as an array
 }
 
@@ -45,6 +45,7 @@ private function _loadController(){
     if(file_exists($file)){
         require $file;
         $this->_controller=new $this->_url[0];
+        $this->_controller->loadModel($this->_url[0]);//loading the model of the controller
         return true;
     }
     else{

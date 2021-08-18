@@ -1,12 +1,12 @@
 <?php
-class TestController extends Controller{
+class Test_Model extends Model{
     function __construct()
     {
         parent::__construct();
     }
     function index(){
-        echo "dff";
-        //$this->model->printSomething();
+        
+        $this->model->printSomething();
     }
 }
 

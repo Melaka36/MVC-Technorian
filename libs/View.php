@@ -4,6 +4,9 @@ class View{
     {
         
     }
+    public function render($viewName){
+        require 'views/'.$viewName.'.php';
+    }
 }
 
 ?>
